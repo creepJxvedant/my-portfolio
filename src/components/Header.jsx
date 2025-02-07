@@ -23,12 +23,12 @@ function Header() {
                     <Menu onClick={() => setMenuState(!isOpen)} className="w-8 h-8 text-blue-600" />
                 )}
             </div>
-        <div className={`glass sidebar ${isOpen && `showDialog`} place-items-center text-white w-64 fixed`}>
+        <div className={`glass sidebar ${isOpen && `showDialog`} place-items-center text-blue-600 w-64 fixed`}>
             <ul className="space-y-4 p-4">
-                <li className="hover:bg-gray-700 p-2 rounded"><a href="#home">Home</a></li>
-                <li className="hover:bg-gray-700 p-2 rounded"><a href="#about">About</a></li>
-                <li className="hover:bg-gray-700 p-2 rounded"><a href="#services">Services</a></li>
-                <li className="hover:bg-gray-700 p-2 rounded"><a href="#contact">Contact</a></li>
+                <li className="p-2 rounded"><a href="#home">Home</a></li>
+                <li className=" p-2 rounded"><a href="#about">About</a></li>
+                <li className=" p-2 rounded"><a href="#services">Services</a></li>
+                <li className="p-2 rounded"><a href="#contact">Contact</a></li>
             </ul>
         </div>
             
