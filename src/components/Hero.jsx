@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef} from "react";
 import Header from "./Header";
 import { FaGithub, FaLinkedin, FaTwitter} from "react-icons/fa";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     const [typedText, setTypedText] = useState("");
-    const fullText = "Crafting robust and scalable Java applications";
+    const fullText = "Crrafting robust and scalable Java applications";
 
     useEffect(() => {
         let index = 0;
@@ -20,13 +24,40 @@ const Hero = () => {
         return () => clearInterval(typingInterval);
     }, []);
 
+    const HomeRef = useRef(null);
+
+    useEffect(() => {
+      const ctx = gsap.context(() => {
+          gsap.fromTo(
+            HomeRef.current,
+              { scale:1,opacity:1},
+              {
+                scale:1.5,opacity:0,
+                duration:1,
+                ease:"sine.inOut",
+                scrollTrigger: {
+                  trigger: HomeRef.current,
+                  start: "top 0%",
+                  end: "bottom 10%",
+                  toggleActions: "play none none reverse",
+                  scrub:true
+                },
+              }
+            );
+      });
+  
+      return () => ctx.revert(); 
+    }, []);
+  
+  
+
     return (
-        <div id="home" className="hero-container bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen flex items-center justify-center">
+        <div id="home" ref={HomeRef} className="hero-container bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen flex items-center justify-center">
             <Header />
             <div className="glass hero-content flex flex-col md:flex-row items-center justify-center max-w-3xl mx-auto">
                 <div className="hero-image place-items-center w-full md:w-1/4 mb-4 md:mb-0">
                     <img
-                        src="./images/OIP.jpg"
+                        src="../../public/images/OIP.jpg"
                         alt="Hero Image"
                         className="rounded-lg shadow-xl hover:shadow-yellow-300/20 transition-shadow duration-300 w-[60%] h-auto"
                     />
