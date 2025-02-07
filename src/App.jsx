@@ -1,9 +1,9 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { lazy, useState, useEffect } from "react";
 import Loader from "./Loader";
+import Hero from './components/Hero';
 import './output.css';
 import './index.css';
 
-const Hero = lazy(() => import('./components/Hero'));
 const Features = lazy(() => import('./components/Features'));
 const Tools = lazy(() => import('./components/Tools'));
 const Project = lazy(() => import('./components/Project'));
@@ -14,7 +14,6 @@ function App() {
 
     useEffect(() => {
         Promise.all([
-            import('./components/Hero'),
             import('./components/Features'),
             import('./components/Tools'),
             import('./components/Project'),
