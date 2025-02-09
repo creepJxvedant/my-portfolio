@@ -1,25 +1,53 @@
-import { useState } from "react"
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa"
-import toast, { Toaster } from "react-hot-toast"
+import { useState } from "react";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
+import emailjs from "@emailjs/browser";
 
 const Footer = () => {
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
+  const [userName, setuserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const TEMPLATE_ID = "template_lr17rp1";
+  const PUBLICKEY = "jMx5bzPWmlYNaSvaO";
+  const SERVICE_ID = "service_iinsw15";
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted", { email, message })
+    e.preventDefault();
 
-    // Show success toast
-    toast.success("Thank you for your message. I'll get back to you soon.", {
-      duration: 5000,
-      position: "bottom-center",
-    })
+    var templateParams = {
+      from_name: userName,
+      from_email: email,
+      message: message,
+    };
 
-    setEmail("")
-    setMessage("")
-  }
+    emailjs.init({
+      publicKey: PUBLICKEY,
+      limitRate: {
+        id: "app",
+        throttle: 10000,
+      },
+    });
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams).then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        toast.success(
+          "Thank you for your message. I'll get back to you soon.",
+          {
+            duration: 5000,
+            position: "bottom-center",
+          }
+        );
+
+        setuserName("");
+        setEmail("");
+        setMessage("");
+      },
+      (error) => {
+        console.log("FAILED...", error);
+      }
+    );
+  };
 
   return (
     <footer className="bg-gray-900 text-gray-300 border-t border-gray-700 relative overflow-hidden">
@@ -27,16 +55,20 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">About Me</h3>
+            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">
+              About Me
+            </h3>
             <p className="text-base text-gray-500">
-              I'm a passionate developer creating elegant solutions to complex problems. Always learning, always
-              growing.
+              I'm a passionate developer creating elegant solutions to complex
+              problems. Always learning, always growing.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Quick Links</h3>
+            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               {["Home", "Projects", "About", "Contact"].map((link) => (
                 <li key={link}>
@@ -53,13 +85,31 @@ const Footer = () => {
 
           {/* Contact & Social */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Connect</h3>
+            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">
+              Connect
+            </h3>
             <div className="flex space-x-6">
               {[
-                { icon: FaGithub, label: "GitHub", href: "https://github.com/yourusername" },
-                { icon: FaLinkedin, label: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
-                { icon: FaTwitter, label: "Twitter", href: "https://twitter.com/yourusername" },
-                { icon: FaEnvelope, label: "Email", href: "mailto:your.email@example.com" },
+                {
+                  icon: FaGithub,
+                  label: "GitHub",
+                  href: "https://github.com/creepJxvedant",
+                },
+                {
+                  icon: FaLinkedin,
+                  label: "LinkedIn",
+                  href: "https://linkedin.com/in/creepJxvedant",
+                },
+                {
+                  icon: FaTwitter,
+                  label: "Twitter",
+                  href: "https://twitter.com/creepJxvedant",
+                },
+                {
+                  icon: FaEnvelope,
+                  label: "Email",
+                  href: "mailto:vedantverma303@gmail.com",
+                },
               ].map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
@@ -77,8 +127,24 @@ const Footer = () => {
 
           {/* Contact Form */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Contact Me</h3>
+            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">
+              Contact Me
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="sr-only">
+                  Name
+                </label>
+                <input
+                  id="userName"
+                  type="text"
+                  placeholder="Your Name"
+                  value={userName}
+                  onChange={(e) => setuserName(e.target.value)}
+                  required
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
               <div>
                 <label htmlFor="email" className="sr-only">
                   Email
@@ -130,8 +196,7 @@ const Footer = () => {
       </div>
       <Toaster />
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
-
+export default Footer;

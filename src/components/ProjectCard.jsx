@@ -1,3 +1,5 @@
+import GitHubStars from "./GitHubStars";
+
 function ProjectCard({id,name,info,image,tools,stars,forward}){
     return (
       <div key={id} className="project-card bg-gray-900 rounded-lg shadow-2xl p-4 max-w-xs text-white">
@@ -22,11 +24,7 @@ function ProjectCard({id,name,info,image,tools,stars,forward}){
       <h2 className="text-md font-bold truncate">{name}</h2>
       <p className="text-sm text-wrap truncate">{info}</p>
         <div className="flex items-center justify-between mt-3">
-          <div className="flex items-center">
-            <span className="text-yellow-400 text-lg font-bold">{stars}</span>
-            <span className="ml-1 text-sm">★</span>
-            <a href={`https://creepjxvedant.github.io/${forward}`} className='ml-36 outline-red-600  cursor-pointer outline hover:bg-red-600 outline-2 text-center text-3xl text-gray-300 rounded w-[80px] h-[40px]'>→</a>
-          </div>
+           <GitHubStars link={forward} stars={stars}></GitHubStars>
         </div>
   
         <div className="flex flex-wrap mt-3 gap-2">

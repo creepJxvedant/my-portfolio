@@ -4,6 +4,7 @@ export const features = [
     `My portfolio demonstrates mastery across languages,algorithms, and design patterns, showcasing efficient
       and scalable solutions. Each project reflects my deep
       understanding and commitment to delivering high-quality code.`,
+    1,
   ],
   [
     `Innovation and Creativity`,
@@ -12,6 +13,7 @@ export const features = [
       My portfolio highlights projects
       where I've pushed boundaries, explored new approaches,
       and implemented cutting-edge features to solve complex challenges.`,
+    2,
   ],
   [
     `Collaboration and Teamwork`,
@@ -19,6 +21,7 @@ export const features = [
       to team projects. My portfolio includes examples where 
       I've coordinated with peers, communicated technical concepts clearly, 
       and integrated diverse perspectives to achieve project goals.`,
+    3,
   ],
   [
     `Impact and Contribution`,
@@ -26,13 +29,16 @@ export const features = [
       and enhancing user experiences. Through thoughtful design and robust implementation, 
       I've delivered solutions that improve efficiency, streamline processes,
       and positively impact stakeholders and end-users alike.`,
+
+    4,
   ],
   [
-    `Impact and Contribution`,
+    `Diverse Perspective`,
     `I excel in collaborative environments, contributing effectively 
       to team projects. My portfolio includes examples where 
       I've coordinated with peers, communicated technical concepts clearly, 
       and integrated diverse perspectives to achieve project goals.`,
+    5,
   ],
 ];
 
