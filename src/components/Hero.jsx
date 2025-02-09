@@ -1,6 +1,8 @@
 import { useRef, useEffect } from "react";
 import Header from "./Header";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import BackgroundMusic from "./BackGroundMusic";
+import { BsSoundwave } from "react-icons/bs";
 
 const Hero = () => {
   const textRef = useRef(null);
@@ -15,7 +17,7 @@ const Hero = () => {
       } else {
         clearInterval(typeInterval);
       }
-    }, 150);
+    }, 100);
 
     return () => clearInterval(typeInterval);
   }, []);
@@ -55,6 +57,7 @@ const Hero = () => {
     >
       <Header />
       <div className="glass hero-content flex flex-col md:flex-row items-center justify-center max-w-3xl mx-auto">
+        <BsSoundwave className="absolute w-64 h-64 text-cyan-100/5 pointer-events-none"></BsSoundwave>
         <div className="place-items-center w-full md:w-1/4 mb-4 md:mb-0">
           <img
             src="./images/OIP.jpg"
@@ -68,7 +71,7 @@ const Hero = () => {
           </h1>
           <p
             ref={textRef}
-            className="text-pretty text-lg text-white font-serif"
+            className="text-pretty text-lg max-md:text-sm text-white font-serif"
           ></p>
           <p className="text-slate-300 text-sm md:text-md mb-4 md:mb-6 animate-fade-in">
             I am a passionate developer with experience in building high-quality
@@ -79,21 +82,22 @@ const Hero = () => {
               href="https://github.com/creepJxvedant"
               icon={<FaGithub className="mr-2" />}
               text="GitHub"
-              className="bg-yellow-300 text-gray-900 hover:bg-yellow-400"
+              className="bg-black text-white text-sm hover:bg-[#1a1818]"
             />
             <SocialButton
               href="https://linkedin.com/in/_icycoldwater"
               icon={<FaLinkedin className="mr-2" />}
               text="LinkedIn"
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-blue-600 hover:bg-blue-700 text-sm"
             />
             <SocialButton
               href="https://twitter.com/_icycoldwater"
               icon={<FaTwitter className="mr-2" />}
               text="Twitter"
-              className="bg-blue-400 hover:bg-blue-500"
+              className="bg-blue-400 hover:bg-blue-500 text-sm"
             />
           </div>
+          <BackgroundMusic />
         </div>
       </div>
     </div>

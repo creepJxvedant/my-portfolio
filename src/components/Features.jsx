@@ -17,7 +17,12 @@ function Features() {
       className="page p-10 mt-64 flex flex-wrap gap-8 justify-center"
     >
       {features.map((feature) => (
-        <Card title={feature[0]} para={feature[1]} iconName={feature[2]}></Card>
+        <Card
+          key={feature[0]}
+          title={feature[1]}
+          para={feature[2]}
+          id={feature[0]}
+        ></Card>
       ))}
     </div>
   );

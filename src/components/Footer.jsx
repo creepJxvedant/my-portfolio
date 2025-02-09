@@ -38,19 +38,24 @@ const Footer = () => {
             position: "bottom-center",
           }
         );
-
-        setuserName("");
-        setEmail("");
-        setMessage("");
       },
-      (error) => {
-        console.log("FAILED...", error);
+      (e) => {
+        toast.error("some error occured!, dont give up!", {
+          duration: 5000,
+          position: "bottom-center",
+        });
       }
     );
+    setuserName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-300 border-t border-gray-700 relative overflow-hidden">
+    <footer
+      id="contact"
+      className="bg-gray-900 text-gray-300 border-t border-gray-700 relative overflow-hidden"
+    >
       <div className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}

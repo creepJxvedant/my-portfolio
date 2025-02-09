@@ -34,7 +34,7 @@ function App() {
         <Features />
       </div>
       <div className="slider-container w-screen min-h-[50vh] max-h-[60vh] flex flex-col place-content-center mt-20 p-6">
-        <h1 className="text-3xl font-bold text-center p-8 text-cyan-400">
+        <h1 className="text-3xl max-md:text-xl font-bold text-center p-8 text-blue-700">
           The Mindset, The skills "You're looking for"
         </h1>
         <Tools />

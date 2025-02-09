@@ -8,7 +8,7 @@ import { ImParagraphCenter } from "react-icons/im";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function Card({ title, para, iconName }) {
+function Card({ title, para, id }) {
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -43,19 +43,19 @@ function Card({ title, para, iconName }) {
       <div className="head pt-4">
         <ul className="flex justify-center list-none gap-3">
           <li className="text-red-500 text-3xl">
-            {iconName == 1 ? (
+            {id === 1 ? (
               <Code2 />
-            ) : iconName == 2 ? (
+            ) : id === 2 ? (
               <BiBulb />
-            ) : iconName == 3 ? (
+            ) : id === 3 ? (
               <GiTeamUpgrade />
-            ) : iconName == 4 ? (
+            ) : id === 4 ? (
               <ImParagraphCenter />
             ) : (
               <GiPerspectiveDiceFive />
             )}
           </li>
-          <li className="text-xl text-red-500">
+          <li className="text-xl max-md:text-sm text-red-500">
             <strong>{title}</strong>
           </li>
         </ul>

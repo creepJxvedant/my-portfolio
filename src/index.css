@@ -7,7 +7,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+
+body {
   user-select: none;
+  cursor: url('../public/svg/cursor.svg') 4 4, auto;
 }
 
 
@@ -35,7 +40,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../public/images/hero.jpg');
+  background-image: url('../public/images/Hero.png');
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(5px);
