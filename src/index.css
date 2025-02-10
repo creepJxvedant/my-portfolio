@@ -15,6 +15,21 @@ body {
   cursor: url('../public/svg/cursor.svg') 4 4, auto;
 }
 
+.loader {
+  animation: loaderanimate 1s 0.2s linear forwards;
+}
+
+.custom-icon {
+  width: 200pt;
+  height: 30pt;
+  fill: none;
+  stroke: #000000;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: carve 5s infinite alternate;
+}
+
 
 .hero-container {
   position: relative;
@@ -204,6 +219,42 @@ body {
 .animate-fade-in {
   will-change: opacity;
   animation: fadeIn 2s ease-out;
+}
+
+
+@keyframes carve {
+  0% {
+    filter: blur(10px);
+    stroke-dasharray: 10;
+  }
+
+  20% {
+    filter: blur(0);
+
+  }
+
+  50% {
+    stroke-dasharray: 150;
+    fill: none;
+  }
+
+  100% {
+    stroke-dasharray: 350;
+    fill: #000000;
+  }
+}
+
+
+@keyframes loaderanimate {
+
+  from {
+    top: 0;
+  }
+
+  to {
+    top: -100%;
+  }
+
 }
 
 @media screen and (min-width:300px) {

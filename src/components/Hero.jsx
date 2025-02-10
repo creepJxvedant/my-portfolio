@@ -9,17 +9,20 @@ const Hero = () => {
   const message = "Crafting robust and scalable Java applications";
 
   useEffect(() => {
-    let index = 0;
-    const typeInterval = setInterval(() => {
-      if (index < message.length) {
-        textRef.current.textContent += message.charAt(index);
-        index++;
-      } else {
-        clearInterval(typeInterval);
-      }
-    }, 100);
+    const minLoaderTime = setTimeout(() => {
+      let index = 0;
+      const typeInterval = setInterval(() => {
+        if (index < message.length) {
+          textRef.current.textContent += message.charAt(index);
+          index++;
+        } else {
+          clearInterval(typeInterval);
+        }
+      }, 100);
+      return () => clearInterval(typeInterval);
+    }, 3000);
 
-    return () => clearInterval(typeInterval);
+    return () => clearInterval(minLoaderTime);
   }, []);
 
   useEffect(() => {
@@ -53,7 +56,7 @@ const Hero = () => {
   return (
     <div
       id="home"
-      className="hero-container bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen flex items-center justify-center"
+      className="hero-container will-change-auto bg-gradient-to-br from-gray-900 to-gray-800 text-white min-h-screen flex items-center justify-center"
     >
       <Header />
       <div className="glass hero-content flex flex-col md:flex-row items-center justify-center max-w-3xl mx-auto">
